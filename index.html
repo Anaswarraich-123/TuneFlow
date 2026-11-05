@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0b1220">
+  <title>TuneFlow — Discover. Listen. Feel.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" data-page="home"><span class="brand-mark">♪</span><span>Tune<span class="brand-blue">Flow</span></span></a>
+      <div class="side-label">MENU</div>
+      <nav class="main-nav">
+        <button class="nav-link active" data-page="home"><span>⌂</span> Home</button>
+        <button class="nav-link" data-page="search"><span>⌕</span> Search</button>
+        <button class="nav-link" data-page="explore"><span>✦</span> Explore</button>
+      </nav>
+      <div class="side-label library-label">YOUR LIBRARY</div>
+      <nav class="main-nav">
+        <button class="nav-link" data-page="liked"><span>♡</span> Liked Music</button>
+        <button class="nav-link" data-page="playlists"><span>▤</span> Playlists</button>
+        <button class="nav-link" data-page="recent"><span>◷</span> Recently Played</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="mini-note"><span class="note-icon">♫</span><p>Your music, your mood.<br><small>Discover something new.</small></p></div>
+        <button class="nav-link" data-page="settings"><span>⚙</span> Settings</button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="menuBtn" aria-label="Open menu">☰</button>
+        <div class="search-wrap">
+          <span class="search-symbol">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search songs, artists, albums..." autocomplete="off">
+          <kbd>ENTER</kbd>
+        </div>
+        <button class="icon-button" id="settingsBtn" aria-label="Settings">⚙</button>
+      </header>
+
+      <section class="page-section active" id="homePage">
+        <div class="welcome-row">
+          <div><p class="eyebrow">YOUR PERSONAL MUSIC SPACE</p><h1>Feel the <span>music.</span></h1><p class="muted">Find your next favourite song.</p></div>
+          <div class="sound-wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <section class="hero-card">
+          <div class="hero-copy"><span class="hero-tag">TUNEFLOW RADIO</span><h2>Every mood<br>has a <span>soundtrack.</span></h2><p>Search your favourite tracks and let the music take over.</p><button class="primary-button" id="heroSearchBtn">Explore music <span>→</span></button></div>
+          <div class="hero-art"><div class="disc disc-one"></div><div class="disc disc-two"></div><div class="hero-note">♫</div></div>
+        </section>
+
+        <div class="section-heading"><div><p class="eyebrow">START LISTENING</p><h2>Quick picks</h2></div><button class="text-button" data-page="explore">Explore all <span>→</span></button></div>
+        <div class="quick-grid">
+          <button class="quick-card" data-query="Punjabi hits"><span class="quick-icon">♬</span><span><b>Punjabi Hits</b><small>Punjabi music</small></span><span class="quick-arrow">→</span></button>
+          <button class="quick-card" data-query="Bollywood songs"><span class="quick-icon">✦</span><span><b>Bollywood</b><small>Hindi favourites</small></span><span class="quick-arrow">→</span></button>
+          <button class="quick-card" data-query="lofi chill music"><span class="quick-icon">☾</span><span><b>Lo-fi Chill</b><small>Slow it down</small></span><span class="quick-arrow">→</span></button>
+          <button class="quick-card" data-query="English pop hits"><span class="quick-icon">♫</span><span><b>English Pop</b><small>Popular tracks</small></span><span class="quick-arrow">→</span></button>
+        </div>
+
+        <div class="section-heading results-heading"><div><p class="eyebrow">MADE FOR YOUR EARS</p><h2>Discover music</h2></div><button class="text-button" data-page="search">Search songs <span>→</span></button></div>
+        <div class="music-grid" id="musicGrid"><div class="empty-state"><span class="empty-icon">♫</span><b>Your next favourite song is waiting.</b><p>Search for a song or artist to get started.</p></div></div>
+      </section>
+
+      <section class="page-section" id="searchPage">
+        <div class="page-title"><p class="eyebrow">FIND YOUR SOUND</p><h1>Search <span>music.</span></h1><p class="muted">Search tracks, artists, remixes and more.</p></div>
+        <div class="filter-row"><button class="filter-chip active" data-filter="all">All music</button><button class="filter-chip" data-filter="song">Songs</button><button class="filter-chip" data-filter="live">Live</button><button class="filter-chip" data-filter="remix">Remixes</button><button class="filter-chip" data-filter="instrumental">Instrumentals</button></div>
+        <div class="search-results music-grid" id="searchGrid"><div class="empty-state"><span class="empty-icon">⌕</span><b>What do you want to hear?</b><p>Use the search bar above.</p></div></div>
+      </section>
+
+      <section class="page-section" id="explorePage">
+        <div class="page-title"><p class="eyebrow">EXPLORE YOUR VIBE</p><h1>Choose a <span>mood.</span></h1><p class="muted">Pick a style and discover music for it.</p></div>
+        <div class="mood-grid">
+          <button class="mood-card mood-blue" data-query="Punjabi latest songs"><b>Punjabi</b><span>Desi beats & energy</span><i>♫</i></button>
+          <button class="mood-card mood-orange" data-query="Bollywood latest songs"><b>Bollywood</b><span>Hindi melodies</span><i>✦</i></button>
+          <button class="mood-card mood-violet" data-query="lofi chill beats"><b>Chill & Lo-fi</b><span>Relax your mind</span><i>☾</i></button>
+          <button class="mood-card mood-cyan" data-query="English pop music hits"><b>Pop</b><span>Fresh popular sounds</span><i>♬</i></button>
+          <button class="mood-card mood-slate" data-query="hip hop rap music"><b>Hip-Hop</b><span>Rhythm and flow</span><i>⌁</i></button>
+          <button class="mood-card mood-gold" data-query="romantic songs"><b>Romantic</b><span>Melodies & feelings</span><i>♡</i></button>
+        </div>
+        <div class="section-heading"><div><p class="eyebrow">MUSIC FOR EVERY MOMENT</p><h2>Explore results</h2></div></div>
+        <div class="music-grid" id="exploreGrid"></div>
+      </section>
+
+      <section class="page-section" id="likedPage"><div class="page-title"><p class="eyebrow">YOUR COLLECTION</p><h1>Liked <span>music.</span></h1><p class="muted">Songs you have saved for later.</p></div><div class="music-grid" id="likedGrid"></div></section>
+      <section class="page-section" id="playlistsPage"><div class="page-title"><p class="eyebrow">YOUR COLLECTION</p><h1>Your <span>playlists.</span></h1><p class="muted">Create playlists and keep your music together.</p></div><div class="playlist-create"><input id="playlistName" maxlength="40" placeholder="Give your playlist a name"><button class="primary-button" id="createPlaylistBtn">＋ Create playlist</button></div><div class="playlist-list" id="playlistList"></div><div class="music-grid" id="playlistTracks"></div></section>
+      <section class="page-section" id="recentPage"><div class="page-title"><p class="eyebrow">PLAY IT AGAIN</p><h1>Recently <span>played.</span></h1><p class="muted">Pick up where you left off.</p></div><div class="music-grid" id="recentGrid"></div></section>
+      <section class="page-section" id="settingsPage"><div class="page-title"><p class="eyebrow">TUNEFLOW PREFERENCES</p><h1>Settings<span>.</span></h1><p class="muted">A few details about your app.</p></div><div class="settings-panel"><div><b>TuneFlow</b><p class="muted">TuneFlow is ready to play your music! 🎧</p></div><span class="status-pill" id="apiStatus">Checking...</span></div><div class="settings-panel"><div><b>Local music library</b><p class="muted">Liked songs, playlists and history are saved in this browser.</p></div><button class="outline-button" id="clearDataBtn">Clear local data</button></div><p class="fine-print">TuneFlow uses YouTube's official embedded player. Videos may show YouTube branding and ads according to YouTube settings.</p></section>
+
+      <footer class="footer">TUNEFLOW <span>•</span> DISCOVER. LISTEN. FEEL.</footer>
+    </main>
+  </div>
+
+  <div class="player-dock" id="playerDock">
+    <button class="now-playing" id="expandPlayerBtn" type="button" aria-label="Open now playing"><img id="nowThumb" src="" alt=""><span class="now-playing-text"><b id="nowTitle">Nothing playing</b><small id="nowArtist">Choose a track to begin</small></span></button>
+    <div class="player-controls"><button id="prevBtn" aria-label="Previous">⏮</button><button class="play-button" id="playPauseBtn" aria-label="Play or pause">▶</button><button id="nextBtn" aria-label="Next">⏭</button><div class="progress-wrap"><span id="currentTime">0:00</span><input id="progressBar" type="range" min="0" max="1000" value="0"><span id="durationTime">0:00</span></div></div>
+    <div class="player-actions"><button id="dockLikeBtn" aria-label="Like song">♡</button><button id="volumeBtn" aria-label="Volume">🔊</button></div>
+  </div>
+  <section class="player-modal" id="playerModal" aria-hidden="true" aria-label="Now playing"><div class="player-modal-card"><div class="modal-top"><div><span class="eyebrow">TUNEFLOW PLAYER</span><b>Now playing</b></div><button id="minimizePlayerBtn" type="button" aria-label="Minimize player" title="Minimize">↓</button></div><div class="youtube-stage"><div id="youtubePlayer"></div></div><div class="modal-track-info"><div><b id="modalTitle">Select a track</b><span id="modalArtist"></span></div><span class="playing-label">♪ PLAYING IN TUNEFLOW</span></div><p class="fine-print">Video playback uses YouTube's official embedded player.</p></div></section>
+  <div class="toast" id="toast"></div>
+</body>
+</html>
